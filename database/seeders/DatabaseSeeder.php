@@ -9,19 +9,26 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $user = User::factory()->create([
-            'name' => 'John Doe'
-        ]);
+  /**
+   * Seed the application's database.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    $user = User::factory()->create([
+      'name' => 'John Doe'
+    ]);
 
-        Post::factory(5)->create([
-            'user_id' => $user->id
-        ]);
+    $categories = Category::factory(3)->create();
+
+    for ($i = 0; $i < 10; $i++) {
+      Post::factory()->create(
+        [
+          'category_id' => $categories->random()->id,
+          'user_id' => $user->id,
+        ]
+      );
     }
+  }
 }
