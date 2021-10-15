@@ -25,8 +25,11 @@
               alt="Lary avatar"
             >
             <div class="ml-3 text-left">
-              <h5 class="font-bold">{{ $post->author->name }}
-              </h5>
+              <h5 class="font-bold">
+                <a href="/?author={{ $post->author->username }}">
+                  {{ $post->author->name }}
+                </a>
+            </h5>
             </div>
           </div>
         </div>
