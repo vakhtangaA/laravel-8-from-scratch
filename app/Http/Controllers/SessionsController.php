@@ -8,9 +8,34 @@ class SessionsController extends Controller
 {
     public function destroy()
     {
-        // auth()->logout();
         Auth::logout();
 
         return redirect('/')->with('success', 'Goodbye!');
+    }
+
+    public function create()
+    {
+        return view('sessions.create');
+    }
+
+    public function store()
+    {
+
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+
+        if (Auth::attempt($attributes)) {
+
+            session()->regenarate();
+
+            return redirect('/')->with('success', 'Welcome Back!');
+        }
+
+        return back()
+            ->withInput()
+            ->withErrors(['email' => 'Your provided credentials could not be verified.']);
     }
 }
