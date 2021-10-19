@@ -18,9 +18,6 @@
             value="{{ old('name') }}"
             required
           />
-          <!-- @error('name')
-            <p class="text-red-600">{{ $message }}<p/>
-          @enderror -->
         </div>
         <div class="mb-6">
           <label

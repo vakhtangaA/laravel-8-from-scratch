@@ -24,7 +24,6 @@ class RegisterController extends Controller
         $user = User::create($attributes);
 
         Auth::login($user);
-        // auth()->login($user);
 
         session()->flash('success', 'Your account has been created');
 
