@@ -86,6 +86,38 @@
             {{ $post->body }}
           </div>
         </div>
+        <section class="col-span-8 col-start-5 mt-10 space-y-6">
+
+          <form method="POST" action="#" class="border border-gray-200 p-6 rounded-xl">
+            @csrf
+            <header class="flex items-center">
+              <img
+                src="https://i.pravatar.cc/60?u={auth()->user()->id }}"
+                alt="avatar"
+                width="40px"
+                height="40px"
+                class="rounded-full mr-5"
+              />
+              <h2>
+                Want to paricipate?
+              </h2>
+            </header>
+
+            <div class="mt-6">
+              <textarea name="body" class="w-full text-sm focus:outline-none focus:ring p-2" cols="30" placeholder="commengsgsgsgst" rows="6" ></textarea>
+
+              <div>
+                <button type="submit" class="bg-blue-400 p-1  text-white">Post</button>
+              </div>
+             
+            </div>
+
+          </form>
+
+          @foreach ($post->comments as $comment)
+            <x-post-comment :comment="$comment"/>
+          @endforeach
+        </section>
       </article>
     </main>
 
