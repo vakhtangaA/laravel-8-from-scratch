@@ -87,12 +87,13 @@
           </div>
         </div>
         <section class="col-span-8 col-start-5 mt-10 space-y-6">
+          @auth
 
-          <form method="POST" action="#" class="border border-gray-200 p-6 rounded-xl">
+          <form method="POST" action="/posts/{{ $post->slug }}/comments" class="border border-gray-200 p-6 rounded-xl">
             @csrf
             <header class="flex items-center">
               <img
-                src="https://i.pravatar.cc/60?u={auth()->user()->id }}"
+                src="https://i.pravatar.cc/60?u={{ $post->user_id }}"
                 alt="avatar"
                 width="40px"
                 height="40px"
@@ -104,15 +105,25 @@
             </header>
 
             <div class="mt-6">
-              <textarea name="body" class="w-full text-sm focus:outline-none focus:ring p-2" cols="30" placeholder="commengsgsgsgst" rows="6" ></textarea>
+              <textarea name="body" class="w-full text-sm focus:outline-none focus:ring p-2" cols="30" placeholder="comment here" rows="6" required></textarea>
+
+              @error('body')
+                <span class="text-red-500 text-xs">{{ $message }}</span>
+              @enderror
 
               <div>
-                <button type="submit" class="bg-blue-400 p-1  text-white">Post</button>
+                <button type="submit" class="bg-blue-400 p-1  text-white mt-3">Post</button>
               </div>
              
             </div>
 
           </form>
+
+          @else 
+          <p class="font-semibold">
+            <a href="/login" class="hover:underline" >Log in to leave a comment.</a>
+          </p>
+          @endauth
 
           @foreach ($post->comments as $comment)
             <x-post-comment :comment="$comment"/>
