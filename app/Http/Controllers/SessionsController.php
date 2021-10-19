@@ -29,8 +29,6 @@ class SessionsController extends Controller
 
         if (Auth::attempt($attributes)) {
 
-            session()->regenarate();
-
             return redirect('/')->with('success', 'Welcome Back!');
         }
 
