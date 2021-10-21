@@ -13,7 +13,7 @@
   <div class="py-6 px-5">
     <div>
       <img
-        src="/images/illustration-3.png"
+        src="{{ asset('storage/' . $post->thumbnail) }}"
         alt="Blog Post illustration"
         class="rounded-xl"
       />

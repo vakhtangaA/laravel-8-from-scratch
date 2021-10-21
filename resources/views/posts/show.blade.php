@@ -8,8 +8,8 @@
       >
         <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
           <img
-            src="/images/illustration-1.png"
-            alt=""
+            src="{{ asset('storage/' . $post->thumbnail) }}"
+            alt="thumbnail"
             class="rounded-xl"
           >
 

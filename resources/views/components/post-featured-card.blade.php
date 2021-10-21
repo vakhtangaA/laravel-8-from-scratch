@@ -11,7 +11,7 @@
   <div class="py-6 px-5 lg:flex">
     <div class="flex-1 lg:mr-8">
       <img
-        src="/images/illustration-1.png"
+        src="{{ asset('storage/' . $post->thumbnail) }}"
         alt="Blog Post illustration"
         class="rounded-xl"
       />
