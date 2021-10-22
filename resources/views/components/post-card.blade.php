@@ -11,9 +11,10 @@
 ]) }}
 >
   <div class="py-6 px-5">
+
     <div>
       <img
-        src="{{ asset('storage/' . $post->thumbnail) }}"
+        src="{{$post->thumbnail === null ? '/images/illustration-3.png' :  asset('storage/' . $post->thumbnail)}}"
         alt="Blog Post illustration"
         class="rounded-xl"
       />
@@ -53,7 +54,7 @@
       </header>
 
       <div class="text-sm mt-4">
-        <p>
+        <p class="break-all">
           {{ $post->excerpt }}
         </p>
 

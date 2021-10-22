@@ -7,8 +7,9 @@
         class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10"
       >
         <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
+         
           <img
-            src="{{ asset('storage/' . $post->thumbnail) }}"
+            src="{{  $post->thumbnail === null ? '/images/illustration-3.png' :  asset('storage/' . $post->thumbnail)}}"
             alt="thumbnail"
             class="rounded-xl"
           >
@@ -82,7 +83,7 @@
             {{ $post->title }}
           </h1>
 
-          <div class="space-y-4 lg:text-lg leading-loose">
+          <div class="space-y-4 lg:text-lg leading-loose break-all">
             {{ $post->body }}
           </div>
         </div>
