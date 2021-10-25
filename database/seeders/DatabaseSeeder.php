@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+# TODO: remove unused imports
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { # TODO: remove blank line below
 
         Post::factory(20)->create();
     }

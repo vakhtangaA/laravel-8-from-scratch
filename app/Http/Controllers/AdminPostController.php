@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+# TODO: remove unused imports
+
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -22,11 +24,20 @@ class AdminPostController extends Controller
 
     public function create()
     {
+        # TODO
+        # If you are returning only views, 
+        # You can do this from the routes file like this:
+        # Route::view('route', 'view');
+        # @see https://laravel.com/docs/8.x/routing#view-routes
         return view('admin.posts.create');
     }
 
     public function update(Post $post)
     {
+        # TODO 
+        # validation logic should be extracted
+        # Into custom request
+        # @see https://laravel.com/docs/8.x/validation#form-request-validation
         $atrributes = request()->validate([
             'title' => 'required',
             'thumbnail' => 'image',
@@ -47,6 +58,10 @@ class AdminPostController extends Controller
 
     public function store()
     {
+        # TODO 
+        # validation logic should be extracted
+        # Into custom request
+        # @see https://laravel.com/docs/8.x/validation#form-request-validation
         $atrributes = request()->validate([
             'title' => 'required',
             'thumbnail' => 'required|image',

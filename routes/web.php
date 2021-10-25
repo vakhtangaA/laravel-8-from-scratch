@@ -28,6 +28,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
+# TODO: extract this logic into controller
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts.index', [
         'posts' => $author->posts,
@@ -43,6 +44,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('sessions', [SessionsController::class, 'store']);
 });
 
+# TODO: no need for this comment, it's obvious itself
 // Admin 
 
 Route::middleware('can:admin')->group(function () {
