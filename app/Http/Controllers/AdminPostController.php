@@ -2,88 +2,60 @@
 
 namespace App\Http\Controllers;
 
-# TODO: remove unused imports
-
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class AdminPostController extends Controller
 {
-    public function index()
-    {
-        return view('admin.posts.index', [
-            'posts' => Post::paginate(50)
-        ]);
-    }
+	public function index()
+	{
+		return view('admin.posts.index', [
+			'posts' => Post::paginate(50),
+		]);
+	}
 
-    public function edit(Post $post)
-    {
-        return view('admin.posts.edit', ['post' => $post]);
-    }
+	public function edit(Post $post)
+	{
+		return view('admin.posts.edit', ['post' => $post]);
+	}
 
-    public function create()
-    {
-        # TODO
-        # If you are returning only views, 
-        # You can do this from the routes file like this:
-        # Route::view('route', 'view');
-        # @see https://laravel.com/docs/8.x/routing#view-routes
-        return view('admin.posts.create');
-    }
+	public function create()
+	{
+		# this view is used with resources
+		return view('admin.posts.create');
+	}
 
-    public function update(Post $post)
-    {
-        # TODO 
-        # validation logic should be extracted
-        # Into custom request
-        # @see https://laravel.com/docs/8.x/validation#form-request-validation
-        $atrributes = request()->validate([
-            'title' => 'required',
-            'thumbnail' => 'image',
-            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
+	public function update(Post $post, UpdatePostRequest $request)
+	{
+		$attributes = $request->validated();
 
-        if (isset($atrributes['thumbnail'])) {
-            $atrributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-        }
+		if (isset($request['thumbnail']))
+		{
+			$post['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		}
 
-        $post->update($atrributes);
+		$post->update($attributes);
 
-        return back()->with('success', 'Post Updated');
-    }
+		return back()->with('success', 'Post Updated');
+	}
 
-    public function store()
-    {
-        # TODO 
-        # validation logic should be extracted
-        # Into custom request
-        # @see https://laravel.com/docs/8.x/validation#form-request-validation
-        $atrributes = request()->validate([
-            'title' => 'required',
-            'thumbnail' => 'required|image',
-            'slug' => ['required', Rule::unique('posts', 'slug')],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
+	public function store(StorePostRequest $request)
+	{
+		$post = new Post;
 
+		$attributes = $request->validated();
+		$attributes['user_id'] = auth()->id();
 
-        $atrributes['user_id'] = auth()->id();
-        $atrributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		Post::create($attributes);
 
-        Post::create($atrributes);
+		return redirect('/');
+	}
 
-        return redirect('/');
-    }
+	public function destroy(Post $post)
+	{
+		$post->delete();
 
-    public function destroy(Post $post)
-    {
-        $post->delete();
-
-        return back()->with('success', 'Post Deleted!');
-    }
+		return back()->with('success', 'Post Deleted!');
+	}
 }
