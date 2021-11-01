@@ -6,18 +6,17 @@ use App\Models\Category;
 use Illuminate\View\Component;
 
 class CategoryDropdown extends Component
-{ # TODO: remove blank line below
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
-    public function render()
-    {
-        return view('components.category-dropdown', [
-            'categories' => Category::all(),
-            'currentCategory' => Category::firstWhere('slug', request('category'))
-        ]);
-    }
+{
+	/**
+	 * Get the view / contents that represent the component.
+	 *
+	 * @return \Illuminate\Contracts\View\View|\Closure|string
+	 */
+	public function render()
+	{
+		return view('components.category-dropdown', [
+			'categories'      => Category::all(),
+			'currentCategory' => Category::firstWhere('slug', request('category')),
+		]);
+	}
 }
