@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 
@@ -28,25 +28,17 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
-# TODO: extract this logic into controller
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts.index', [
-        'posts' => $author->posts,
-    ]);
-});
+Route::get('/authors/{author:username}', [AuthorsController::class, 'index']);
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('register', [RegisterController::class, 'create']);
-    Route::post('register', [RegisterController::class, 'store']);
-    Route::get('login', [SessionsController::class, 'create']);
-    Route::post('sessions', [SessionsController::class, 'store']);
+	Route::view('register', 'register.create');
+	Route::post('register', [RegisterController::class, 'store']);
+	Route::view('login', 'sessions.create');
+	Route::post('sessions', [SessionsController::class, 'store']);
 });
 
-# TODO: no need for this comment, it's obvious itself
-// Admin 
-
 Route::middleware('can:admin')->group(function () {
-    Route::resource('admin/posts', AdminPostController::class)->except('show');
+	Route::resource('admin/posts', AdminPostController::class)->except('show');
 });
