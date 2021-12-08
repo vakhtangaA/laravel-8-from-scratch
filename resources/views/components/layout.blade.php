@@ -12,12 +12,6 @@
 <script defer
         src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js">
 </script>
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-</style>
 
 <body style="font-family: Open Sans, sans-serif">
   <script>
