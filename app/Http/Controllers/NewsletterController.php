@@ -19,7 +19,7 @@ class NewsletterController extends Controller
 			throw ValidationException::withMessages([
 				'email' => 'This email could not be added to our newsletter list',
 			]);
-		} # TODO: remove 2 blank lines below
+		}
 
 		return redirect('/')->with('success', 'You are now signed up for our newsletter!');
 	}
