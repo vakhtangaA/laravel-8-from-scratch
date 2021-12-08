@@ -45,6 +45,10 @@ class AdminPostController extends Controller
 		$attributes = $request->validated();
 		$attributes['user_id'] = auth()->id();
 
+		$imagePath = $request->file('thumbnail')->store('thumbnails');
+
+		$attributes['thumbnail'] = $imagePath;
+
 		Post::create($attributes);
 
 		return redirect('/');
