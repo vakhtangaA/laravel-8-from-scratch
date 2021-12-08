@@ -17,7 +17,9 @@ class AdminPostController extends Controller
 
 	public function edit(Post $post)
 	{
-		return view('admin.posts.edit', ['post' => $post]);
+		$categories = \App\Models\Category::all();
+
+		return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
 	}
 
 	public function create()
