@@ -9,9 +9,6 @@
       content="width=device-width, initial-scale=1.0" />
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet" />
-<script defer
-        src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js">
-</script>
 
 <body style="font-family: Open Sans, sans-serif">
   <script>
