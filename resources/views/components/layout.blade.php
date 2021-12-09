@@ -18,7 +18,7 @@
     <nav class="md:flex md:justify-between md:items-center">
       <div>
         <a href="/">
-          <img src="/images/logo.svg"
+          <img src="{{ asset('images/logo.svg') }}"
                alt="Laracasts Logo"
                width="165"
                height="16" />
@@ -88,7 +88,7 @@
         px-10
         mt-16
       ">
-      <img src="/images/lary-newsletter-icon.svg"
+      <img src="{{ asset('images/lary-newsletter-icon.svg') }}"
            alt=""
            class="mx-auto -mb-6"
            style="width: 145px" />
@@ -107,7 +107,7 @@
             <div class="lg:py-3 lg:px-5 flex items-center">
               <label for="email"
                      class="hidden lg:inline-block">
-                <img src="/images/mailbox-icon.svg"
+                <img src=" {{ asset('images/mailbox-icon.svg') }}"
                      alt="mailbox letter" />
               </label>
 
