@@ -59,7 +59,7 @@
           @auth
 
             <form method="POST"
-                  action="/posts/{{ $post->slug }}/comments"
+                  action="{{ route('comments', ['post' => $post->slug]) }}"
                   class="border border-gray-200 p-6 rounded-xl">
               @csrf
               <header class="flex items-center">

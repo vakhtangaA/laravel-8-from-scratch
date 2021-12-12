@@ -33,7 +33,7 @@
 
         <div class="mt-4">
           <h1 class="text-3xl">
-            <a href="/posts/{{ $post->slug }}">
+            <a href="{{ route('post', ['post' => $post->slug]) }}">
               {{ $post->title }}
             </a>
           </h1>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="hidden lg:block">
-          <a href="/posts/{{ $post->slug }}"
+          <a href="{{ route('post', ['post' => $post->slug]) }}"
              class="
               transition-colors
               duration-300

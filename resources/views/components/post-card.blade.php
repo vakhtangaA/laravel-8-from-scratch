@@ -1,13 +1,13 @@
 <article
          {{ $attributes->merge([
              'class' => '
-                              transition-colors
-                              duration-300
-                              hover:bg-gray-100
-                              border border-black border-opacity-0
-                              hover:border-opacity-5
-                              rounded-xl
-                              ',
+                                                         transition-colors
+                                                         duration-300
+                                                         hover:bg-gray-100
+                                                         border border-black border-opacity-0
+                                                         hover:border-opacity-5
+                                                         rounded-xl
+                                                         ',
          ]) }}>
   <div class="py-6 px-5">
 
@@ -36,7 +36,7 @@
 
         <div class="mt-4">
           <h1 class="text-3xl">
-            <a href="/posts/{{ $post->slug }}">
+            <a href="{{ route('post', ['post' => $post->slug]) }}">
               {{ $post->title }}
             </a>
           </h1>
@@ -70,7 +70,8 @@
         </div>
 
         <div>
-          <a href="/posts/{{ $post->slug }}"
+          <a href="{{ route('post', ['post' => $post->slug]) }}
+                              "
              class="
                       transition-colors
                       duration-300

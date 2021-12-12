@@ -50,16 +50,16 @@
                              @click.prevent="document.querySelector('#logout-form').submit()">
               Logout</x-dropdown-item>
             <form method="POST"
-                  action="/logout"
+                  action="{{ route('logout') }}"
                   id="logout-form"
                   class="hidden">
               @csrf
             </form>
           </x-dropdown>
         @else
-          <a href="/register"
+          <a href="{{ route('register') }}"
              class="text-xs font-bold uppercase">Register</a>
-          <a href="/login"
+          <a href="{{ route('login') }}"
              class="ml-6 text-xs font-bold uppercase">Log In</a>
 
         @endguest
@@ -106,7 +106,7 @@
         <div
              class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
           <form method="POST"
-                action="newsletter"
+                action="{{ route('newsletter') }}"
                 class="lg:flex text-sm">
             @csrf
             <div class="lg:py-3 lg:px-5 flex items-center">

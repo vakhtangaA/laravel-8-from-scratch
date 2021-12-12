@@ -21,7 +21,8 @@
                         <div class="ml-4">
                           <div
                                class="text-sm font-medium text-gray-900">
-                            <a href="/posts/{{ $post->slug }}"
+                            <a href="{{ route('post', ['post' => $post->slug]) }}
+                              "
                                class="underline">
                               {{ $post->title }}
                             </a>

@@ -20,23 +20,23 @@ use App\Http\Controllers\PostCommentsController;
 |
 */
 
-Route::post('newsletter', NewsletterController::class);
+Route::post('newsletter', NewsletterController::class)->name('newsletter');
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
-Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
+Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store'])->name('comments');
 
-Route::get('/authors/{author:username}', [AuthorsController::class, 'index']);
+Route::get('/authors/{author:username}', [AuthorsController::class, 'index'])->name('author');
 
-Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::middleware(['guest'])->group(function () {
-	Route::view('register', 'register.create');
+	Route::view('register', 'register.create')->name('register');
 	Route::post('register', [RegisterController::class, 'store']);
-	Route::view('login', 'sessions.create');
-	Route::post('sessions', [SessionsController::class, 'store']);
+	Route::view('login', 'sessions.create')->name('login');
+	Route::post('sessions', [SessionsController::class, 'store'])->name('sessions');
 });
 
 Route::middleware('can:admin')->group(function () {
