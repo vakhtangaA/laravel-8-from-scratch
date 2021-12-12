@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
@@ -17,7 +18,7 @@ class AdminPostController extends Controller
 
 	public function edit(Post $post)
 	{
-		$categories = \App\Models\Category::all();
+		$categories = Category::all();
 
 		return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
 	}
@@ -25,7 +26,8 @@ class AdminPostController extends Controller
 	public function create()
 	{
 		# this view is used with resources
-		return view('admin.posts.create');
+		$categories = Category::all();
+		return view('admin.posts.create', ['categories' => $categories]);
 	}
 
 	public function update(Post $post, UpdatePostRequest $request)
