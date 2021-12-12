@@ -12,7 +12,7 @@ class NewsletterController extends Controller
 	{
 		try
 		{
-			$newsletter->subscribe($request('email'));
+			$newsletter->subscribe($request['email']);
 		}
 		catch (\Exception $c)
 		{
