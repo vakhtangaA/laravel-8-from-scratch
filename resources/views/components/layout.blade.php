@@ -16,6 +16,10 @@
 </head>
 
 <body style="font-family: Open Sans, sans-serif">
+  {{-- this script tag stops firefox
+    to flash unstyled content and forces it wait until styles are loaded.
+    see this stackoverflow link for reference
+    https://stackoverflow.com/questions/21147149/flash-of-unstyled-content-fouc-in-firefox-only-is-ff-slow-renderer --}}
   <script>
     0
   </script>
