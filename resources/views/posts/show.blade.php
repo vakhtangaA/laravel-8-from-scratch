@@ -22,7 +22,8 @@
                  alt="Lary avatar">
             <div class="ml-3 text-left">
               <h5 class="font-bold">
-                <a href="/?author={{ $post->author->username }}">
+                <a
+                   href="{{ route('home', ['author' => $post->author->username]) }}">
                   {{ $post->author->name }}
                 </a>
               </h5>
@@ -32,7 +33,7 @@
 
         <div class="col-span-8">
           <div class="hidden lg:flex justify-between mb-6">
-            <a href="/"
+            <a href="{{ route('home') }}"
                class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500">
               <x-icons.back-icon />
 
@@ -97,7 +98,7 @@
 
           @else
             <p class="font-semibold">
-              <a href="/login"
+              <a href="{{ route('login') }}"
                  class="hover:underline">Log in to leave a
                 comment.</a>
             </p>

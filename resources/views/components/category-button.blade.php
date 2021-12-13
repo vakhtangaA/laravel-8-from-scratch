@@ -1,6 +1,5 @@
-<a
-  href="/?category={{ $category->slug }}"
-  class="
+<a href="{{ route('home', ['category' => $category->slug]) }}"
+   class="
     px-3
     py-1
     border border-blue-300
@@ -9,7 +8,6 @@
     uppercase
     font-semibold
   "
-  style="font-size: 10px"
->
+   style="font-size: 10px">
   {{ $category->name }}
 </a>

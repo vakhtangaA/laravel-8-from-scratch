@@ -33,8 +33,8 @@ Route::get('/authors/{author:username}', [AuthorsController::class, 'index'])->n
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::middleware(['guest'])->group(function () {
-	Route::view('register', 'register.create')->name('register');
-	Route::post('register', [RegisterController::class, 'store']);
+	Route::view('register', 'register.create')->name('createUser');
+	Route::post('register', [RegisterController::class, 'store'])->name('registerForm');
 	Route::view('login', 'sessions.create')->name('login');
 	Route::post('sessions', [SessionsController::class, 'store'])->name('sessions');
 });

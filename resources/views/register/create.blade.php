@@ -2,7 +2,7 @@
   <section class="px-6 py-8">
     <main class="max-w-lg mx-auto mt-10">
       <h1 class="text-center font-bold text-xl">Register</h1>
-      <form action="{{ route('register') }}"
+      <form action="{{ route('createUser') }}"
             method="POST"
             class="mt-10">
         @csrf

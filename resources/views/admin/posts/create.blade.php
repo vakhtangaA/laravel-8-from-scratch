@@ -84,7 +84,6 @@
                   id="category_id"
                   class="bg-blue-400 text-white">
             @foreach ($categories as $category)
-              ;
               <option value="{{ $category->id }}">
                 {{ ucwords($category->name) }}
               </option>
